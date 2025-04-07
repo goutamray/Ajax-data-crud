@@ -15,6 +15,11 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
+    <!-- data table css -->
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.css"
+        rel="stylesheet"
+        integrity="sha384-M6C9anzq7GcT0g1mv0hVorHndQDVZLVBkRVdRb2SsQT7evLamoeztr1ce+tvn+f2"
+        crossorigin="anonymous">
     <!-- custom css -->
     <link rel="stylesheet"
         href="./assets/css/style.css">
@@ -27,7 +32,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <button class="btn btn-md btn-primary mb-2"
                     data-bs-toggle="modal"
                     data-bs-target="#create_devs_modal"> Create New Dev </button>
@@ -36,22 +41,23 @@
                         <h2 class="text-center"> All Developer List </h2>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped"
+                            id="devsTable">
                             <thead>
                                 <tr>
                                     <td> #ID </td>
                                     <td> Photo </td>
                                     <td> Name </td>
                                     <td> Age </td>
-                                    <td> Location </td>
                                     <td> Skill </td>
+                                    <td> Location </td>
                                     <td> Status </td>
                                     <td> Action </td>
                                 </tr>
                             </thead>
-                            <tbody id="devs_data">
+                            <!-- <tbody id="devs_data">
 
-                            </tbody>
+                            </tbody> -->
                         </table>
                     </div>
                 </div>
@@ -188,6 +194,10 @@
 
         <!-- jquery  -->
         <script src="https://code.jquery.com/jquery-3.7.1.js"> </script>
+        <!-- data table js -->
+        <script src="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.js"
+            integrity="sha384-k90VzuFAoyBG5No1d5yn30abqlaxr9+LfAPp6pjrd7U3T77blpvmsS8GqS70xcnH"
+            crossorigin="anonymous"></script>
         <!-- sweet alert  -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- bootstrap js  -->

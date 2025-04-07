@@ -1,4 +1,63 @@
 $(document).ready(function () {
+  // data tables init
+  const devsTable = $("#devsTable").DataTable({
+    ajax: {
+      url: "./ajax/ajax_template.php?action=all_devs",
+      dataSrc: "",
+    },
+    columns: [
+      {
+        data: "id",
+      },
+      {
+        data: "photo",
+        render: (data, type, row) => {
+          return `<img src="./media/devs/${data}" />`;
+        },
+      },
+      {
+        data: "name",
+      },
+      {
+        data: "age",
+      },
+      {
+        data: "skill",
+      },
+      {
+        data: "location",
+      },
+      {
+        data: "status",
+        render: (data, type, row) => {
+          return ` <label class="switch status_switched" status="${data}" switchId="${
+            row.id
+          }">
+          <input type="checkbox" ${data && "checked"}>
+          <span class="slider round"></span>
+        </label>`;
+        },
+      },
+      {
+        data: null,
+        render: (data, type, row) => {
+          return `  
+          <button class="btn btn-info ">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <button class="btn btn-warning devs_edit_btn"  editId="${row.id}" data-bs-toggle="modal" data-bs-target="#edit_devs_modal">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button class="btn btn-danger devs_data_delete">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+          
+          `;
+        },
+      },
+    ],
+  });
+
   // create devs file
   $("#devs_create_form").submit(function (e) {
     e.preventDefault();
@@ -170,6 +229,10 @@ $(document).ready(function () {
           timer: 1500,
         });
         e.target.reset();
+
+        // reload data table
+        devsTable.ajax.reload();
+
         getAllDevsData();
         const modalclose = setInterval(() => {
           $(".btn-close").click();
